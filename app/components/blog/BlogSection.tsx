@@ -1,17 +1,57 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { query } from "@/app/lib/hashnode";
 import { FiSearch, FiFilter, FiTag, FiEye, FiHeart } from 'react-icons/fi';
 
+// Define TypeScript interfaces
+interface Tag {
+  name: string;
+}
+
+interface OgMetaData {
+  image: string;
+}
+
+interface Post {
+  title: string;
+  brief: string;
+  url: string;
+  publishedAt: string;
+  views: number;
+  reactionCount: number;
+  readTimeInMinutes: number;
+  ogMetaData?: OgMetaData;
+  tags: Tag[];
+}
+
+interface PostNode {
+  node: Post;
+}
+
+interface PostsResponse {
+  edges: PostNode[];
+}
+
+interface PublicationResponse {
+  publication: {
+    posts: PostsResponse;
+  };
+}
+
+interface QueryResponse {
+  data: PublicationResponse;
+}
+
 export default function BlogSection() {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
 
   useEffect(() => {
     async function fetchData() {
-      const result = await query({
+      const result: QueryResponse = await query({
         query: `
           query($host: String!) {
             publication(host: $host) {
@@ -37,19 +77,19 @@ export default function BlogSection() {
           host: 'mmoujane.hashnode.dev'
         }
       });
-      setPosts(result.data.publication.posts.edges.map((edge: any) => edge.node));
+      setPosts(result.data.publication.posts.edges.map((edge: PostNode) => edge.node));
     }
     fetchData();
   }, []);
 
   // Derive all tags from posts
-  const allTags = Array.from(new Set(posts.flatMap(post => post.tags.map((tag: any) => tag.name))));
+  const allTags = Array.from(new Set(posts.flatMap(post => post.tags.map((tag: Tag) => tag.name))));
 
   // Filter posts
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.brief.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesTag = !selectedTag || post.tags.some((tag: any) => tag.name === selectedTag);
+    const matchesTag = !selectedTag || post.tags.some((tag: Tag) => tag.name === selectedTag);
     return matchesSearch && matchesTag;
   });
 
@@ -94,20 +134,25 @@ export default function BlogSection() {
         
         {/* Horizontal slider */}
         <div className="flex overflow-x-auto gap-8 pb-4 snap-x snap-mandatory hide-scrollbar" style={{ WebkitOverflowScrolling: 'touch' }}>
-          {filteredPosts.map((post: any) => (
+          {filteredPosts.map((post: Post) => (
             <article
               key={post.url}
               className="flex-shrink-0 w-96 md:w-[32%] bg-gray-900 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-700 snap-start"
               style={{ minWidth: '320px', maxWidth: '400px' }}
             >
-              <img 
-                src={post.ogMetaData?.image}
-                alt={post.title}
-                className="w-full h-48 object-cover"
-              />
+              {post.ogMetaData?.image && (
+                <Image 
+                  src={post.ogMetaData.image}
+                  alt={post.title}
+                  width={400}
+                  height={192}
+                  className="w-full h-48 object-cover"
+                  priority={false}
+                />
+              )}
               <div className="p-6">
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {post.tags.map((tag: any) => (
+                  {post.tags.map((tag: Tag) => (
                     <span key={tag.name} className="text-xs px-2 py-1 bg-cyan-600/20 text-cyan-400 rounded border border-cyan-600/30">
                       <FiTag size={12} className="inline mr-1" />
                       {tag.name}

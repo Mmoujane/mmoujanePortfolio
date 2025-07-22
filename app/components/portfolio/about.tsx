@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FiChevronRight, FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
+import Image from 'next/image';
+import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
 
 const About: React.FC = () => {
 
@@ -10,13 +11,13 @@ const About: React.FC = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">About Me</h2>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              I'm a passionate blockchain developer with 3+ years of experience building decentralized applications 
+              I&apos;m a passionate blockchain developer with 3+ years of experience building decentralized applications 
               and smart contracts. My journey in Web3 started with a fascination for how blockchain technology 
               can reshape traditional finance and create new opportunities for innovation.
             </p>
             <p className="text-gray-300 mb-6 leading-relaxed">
               I specialize in Ethereum development, DeFi protocols, and creating user-friendly Web3 interfaces. 
-              When I'm not coding, you'll find me exploring the latest in crypto research, contributing to 
+              When I&apos;m not coding, you&apos;ll find me exploring the latest in crypto research, contributing to 
               open-source projects, or writing about blockchain technology.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
@@ -28,7 +29,7 @@ const About: React.FC = () => {
             </div>
             <div className="flex space-x-4 mb-8">
               <Link href="https://www.linkedin.com/in/marwan-moujane-400799322/" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105">
-                Let's Connect
+                Let&apos;s Connect
               </Link>
               <a href="/general/CV.pdf"
                 download className="border border-gray-600 text-gray-300 hover:bg-gray-700 px-6 py-3 rounded-md font-medium transition-colors">
@@ -56,10 +57,13 @@ const About: React.FC = () => {
           </div>
           <div className="relative">
             <div className="bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl p-8 border border-cyan-500/20">
-              <img 
+              <Image 
                 src="/general/me_linkedin.jpg" 
-                alt="Profile"
+                alt="Profile photo of Marwan Moujane"
+                width={500}
+                height={600}
                 className="w-full rounded-lg"
+                priority={true}
               />
             </div>
           </div>

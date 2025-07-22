@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Hero from "./components/ui/hero";
 import PortfolioSection from "./components/portfolio/portfolioSection";
 import Experience from "./components/portfolio/experience";

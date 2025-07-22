@@ -1,4 +1,4 @@
-import { FiChevronRight, FiGithub, FiLinkedin, FiTwitter, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 
 // Sample data

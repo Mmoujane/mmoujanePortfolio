@@ -1,4 +1,4 @@
-import { FiChevronRight, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const Footer: React.FC = () => {
 

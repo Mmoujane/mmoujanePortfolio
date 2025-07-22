@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Button from './button';
 import { FiHome, FiCode, FiBriefcase, FiBookOpen, FiUser, FiX, FiMenu } from 'react-icons/fi';
-import { FaAward, FaBook, FaGraduationCap } from 'react-icons/fa';
+import { FaGraduationCap } from 'react-icons/fa';
 
 const navItems = [
   { key: 'home', label: 'Home', icon: FiHome },

@@ -1,16 +1,32 @@
-import { FiChevronRight, FiGithub, FiLinkedin, FiTwitter, FiBriefcase, FiCalendar } from 'react-icons/fi';
+import { FiCalendar } from 'react-icons/fi';
 import { FaGraduationCap, FaAward, FaStar, FaBook, FaCode, FaUsers } from 'react-icons/fa';
 
-const education = [
+// Define TypeScript interfaces
+interface EducationItem {
+  id: number;
+  type?: string;
+  institution: string;
+  degree: string;
+  specialization?: string;
+  startDate: string;
+  endDate?: string;
+  gpa?: string;
+  description: string;
+  achievements?: string[];
+  coursework?: string[];
+  skills?: string[];
+}
+
+const education: EducationItem[] = [
     {
       id: 1,
       institution: "Institut National des Postes et Télécommunications",
-      degree: "Master’s-level Engineering Degree – Diplôme d’Ingénieur ",
+      degree: "Master's-level Engineering Degree – Diplôme d'Ingénieur ",
       specialization: "CyberSecurity",
       startDate: "2024-09",
       endDate: "2027-06",
       gpa: "",
-      description: "After successfully passing the Concours National Commun, I chose to pursue an engineering degree in cybersecurity at the Institut National des Postes et Télécommunications (INPT) in Rabat. This decision was driven by my passion for technology and the growing importance of cybersecurity in today’s digital world. INPT’s specialized program in cybersecurity provides the ideal environment for me to develop the skills and knowledge necessary to address the challenges of securing information systems and networks, aligning with my long-term career goals.",
+      description: "After successfully passing the Concours National Commun, I chose to pursue an engineering degree in cybersecurity at the Institut National des Postes et Télécommunications (INPT) in Rabat. This decision was driven by my passion for technology and the growing importance of cybersecurity in today's digital world. INPT's specialized program in cybersecurity provides the ideal environment for me to develop the skills and knowledge necessary to address the challenges of securing information systems and networks, aligning with my long-term career goals.",
       achievements: [
         "succesufully accepted into UZH's deep dive into blockchain program"
       ],
@@ -94,12 +110,12 @@ const Education: React.FC = () => {
               Formal Education
             </h3>
             <div className="space-y-8">
-              {education.filter((edu: any) => edu.type !== 'certification' && edu.type !== 'course').map((edu: any, idx: number) => (
+              {education.filter((edu: EducationItem) => edu.type !== 'certification' && edu.type !== 'course').map((edu: EducationItem, idx: number) => (
                 <div key={edu.id} className="relative flex items-start">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-full flex items-center justify-center relative z-10">
                     <FaGraduationCap size={20} className="text-white" />
                   </div>
-                  {idx < education.filter((e: any) => e.type !== 'certification' && e.type !== 'course').length - 1 && (
+                  {idx < education.filter((e: EducationItem) => e.type !== 'certification' && e.type !== 'course').length - 1 && (
                     <div className="absolute left-6 top-12 w-px h-32 bg-gray-700"></div>
                   )}
                   <div className="ml-6 flex-1">
@@ -167,7 +183,7 @@ const Education: React.FC = () => {
                 Certifications
               </h3>
               <div className="space-y-4">
-                {education.filter((edu: any) => edu.type === 'certification').map((cert: any) => (
+                {education.filter((edu: EducationItem) => edu.type === 'certification').map((cert: EducationItem) => (
                   <div key={cert.id} className="bg-gray-900 p-5 rounded-lg border border-gray-700 hover:border-purple-500/50 transition-colors">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
@@ -199,7 +215,7 @@ const Education: React.FC = () => {
                 Online Learning
               </h3>
               <div className="space-y-4">
-                {education.filter((edu: any) => edu.type === 'course').map((course: any) => (
+                {education.filter((edu: EducationItem) => edu.type === 'course').map((course: EducationItem) => (
                   <div key={course.id} className="bg-gray-900 p-5 rounded-lg border border-gray-700 hover:border-green-500/50 transition-colors">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">

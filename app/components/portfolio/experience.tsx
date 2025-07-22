@@ -1,4 +1,4 @@
-import { FiChevronRight, FiGithub, FiLinkedin, FiTwitter, FiBriefcase, FiCalendar } from 'react-icons/fi';
+import { FiBriefcase, FiCalendar } from 'react-icons/fi';
 import { FiExternalLink } from 'react-icons/fi';
 
 const experiences = [
