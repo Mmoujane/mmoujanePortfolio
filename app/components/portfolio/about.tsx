@@ -23,7 +23,7 @@ const About: React.FC = () => {
                 open-source projects, or sharing insights about the evolving blockchain landscape.
                 </p>
             <div className="flex flex-wrap gap-3 mb-8">
-              {["Solidity", "React", "Node.js", "Web3.js", "TypeScript", "Python", "Hardhat"].map(skill => (
+              {["ethereum", "solana", "hedera", "Solidity", "Rust", "Node.js", "Web3.js", "ether.js", "Hardhat", "next.js"].map(skill => (
                 <span key={skill} className="px-3 py-1 bg-gradient-to-r from-cyan-600/20 to-purple-600/20 border border-cyan-500/30 text-cyan-400 rounded-full text-sm">
                   {skill}
                 </span>
