@@ -11,15 +11,17 @@ const About: React.FC = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">About Me</h2>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              I&apos;m a passionate blockchain developer with 3+ years of experience building decentralized applications 
-              and smart contracts. My journey in Web3 started with a fascination for how blockchain technology 
-              can reshape traditional finance and create new opportunities for innovation.
-            </p>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              I specialize in Ethereum development, DeFi protocols, and creating user-friendly Web3 interfaces. 
-              When I&apos;m not coding, you&apos;ll find me exploring the latest in crypto research, contributing to 
-              open-source projects, or writing about blockchain technology.
-            </p>
+                I&apos;m a passionate blockchain developer who discovered the transformative power of Web3 technology 
+                a year ago and haven&apos;t looked back since. My journey began with curiosity about how blockchain 
+                can revolutionize traditional systems and create unprecedented opportunities for innovation.
+                </p>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                I specialize in multi-chain development, working across various blockchain ecosystems to build 
+                decentralized applications and smart contracts. My focus spans DeFi protocols and creating 
+                intuitive Web3 interfaces that bridge the gap between complex technology and everyday users. 
+                When I&apos;m not coding, you&apos;ll find me diving deep into crypto research, contributing to 
+                open-source projects, or sharing insights about the evolving blockchain landscape.
+                </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {["Solidity", "React", "Node.js", "Web3.js", "TypeScript", "Python", "Hardhat"].map(skill => (
                 <span key={skill} className="px-3 py-1 bg-gradient-to-r from-cyan-600/20 to-purple-600/20 border border-cyan-500/30 text-cyan-400 rounded-full text-sm">
